@@ -10,11 +10,12 @@ import common.generic.GenericEventProducer;
 import java.util.concurrent.Executors;
 
 /**
+ * 菱形示例
  * step1-1、step1-2是并行执行的<br/>
  * step1-1和step1-2都执行完之后step2才会执行
  * Created by yanglikun on 2017/2/16.
  */
-public class DependenciesMain {
+public class DependenciesDiamondMain {
 
     public static void main(String[] args) {
 
