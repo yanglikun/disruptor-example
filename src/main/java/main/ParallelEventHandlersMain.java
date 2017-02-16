@@ -2,10 +2,10 @@ package main;
 
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
-import common.LongEvent;
-import common.LongEventFactory;
-import common.LongEventHandler;
-import common.LongEventProducer;
+import common.Long.LongEvent;
+import common.Long.LongEventFactory;
+import common.Long.LongEventHandler;
+import common.Long.LongEventProducer;
 
 import java.nio.ByteBuffer;
 import java.util.concurrent.Executors;
@@ -32,7 +32,8 @@ public class ParallelEventHandlersMain {
                         ());
 
         // Connect the handler
-        disruptor.handleEventsWith(new LongEventHandler("parallel-1"),new LongEventHandler("parallel-2"),new LongEventHandler("parallel-3"));
+        disruptor.handleEventsWith(new LongEventHandler("parallel-1"), new LongEventHandler("parallel-2"), new
+                LongEventHandler("parallel-3"));
 
         // Start the Disruptor, starts all threads running
         disruptor.start();
@@ -44,7 +45,9 @@ public class ParallelEventHandlersMain {
         LongEventProducer producer = new LongEventProducer(ringBuffer);
 
         ByteBuffer bb = ByteBuffer.allocate(8);
-        for (long l = 0; l < 20; l++) {
+
+
+        for (long l = 0; l < 5; l++) {
             bb.putLong(0, l);
             producer.onData(bb);
         }

@@ -2,10 +2,10 @@ package main;
 
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
-import common.LongEvent;
-import common.LongEventFactory;
-import common.LongEventHandler;
-import common.LongEventProducer;
+import common.Long.LongEvent;
+import common.Long.LongEventFactory;
+import common.Long.LongEventHandler;
+import common.Long.LongEventProducer;
 
 import java.nio.ByteBuffer;
 import java.util.concurrent.Executors;
@@ -29,9 +29,8 @@ public class BasicMain {
 
         // Construct the Disruptor
         //构建disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, Executors
-                .defaultThreadFactory
-                        ());
+        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize,
+                Executors.defaultThreadFactory());
 
         // Connect the handler
         disruptor.handleEventsWith(new LongEventHandler("Basic"));

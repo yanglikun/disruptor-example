@@ -1,4 +1,4 @@
-package common;
+package common.Long;
 
 import com.lmax.disruptor.EventTranslatorOneArg;
 import com.lmax.disruptor.RingBuffer;
