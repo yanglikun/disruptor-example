@@ -22,7 +22,7 @@ step1、step2、step3 三个步骤会严格按照顺序执行 **测试类example
 
 ## 菱形顺序
 step1、step2之间没有顺序，但是step3会等到step1、step2都执行完后才会执行 **测试类example_basic.DependenciesDiamondMain**
-![image](https://cloud.githubusercontent.com/assets/1728527/23056600/24204d46-f527-11e6-963c-34c2e591d6ef.png)
+![image](https://cloud.githubusercontent.com/assets/1728527/23059297/c9a66f3c-f533-11e6-8e15-66e9839ae93f.png)
 
 ## 链式依赖顺序
 chain1、chain2之间没有依赖关系，but chain1中的 step1-1、step1-2有先后关系、chain12中的 step2-1、step2-2有先后关系。测试类**example_basic.DependenciesMultiChainMain**
