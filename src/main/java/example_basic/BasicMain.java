@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 
 /**
- * 基础执行
+ * 最基本的example
  * Created by yanglikun on 2017/2/15.
  */
 public class BasicMain {
