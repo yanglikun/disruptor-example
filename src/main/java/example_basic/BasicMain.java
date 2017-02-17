@@ -19,29 +19,24 @@ public class BasicMain {
 
     public static void main(String[] args) throws Exception {
 
-        // The factory for the event
-        //event工厂,用于让disruptor预先分配工厂
+        //生产event的工厂，在disruptor启动的时候用来在ring buffer环中占坑
         LongEventFactory factory = new LongEventFactory();
 
-        // Specify the size of the ring buffer, must be power of 2.
-        //指定ring buffer的大小
+        //指定ring buffer环的大小
         int bufferSize = 1024;
 
-        // Construct the Disruptor
-        //构建disruptor
+        //创建disruptor
         Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize,
                 Executors.defaultThreadFactory());
 
-        // Connect the handler
+        //注册事件处理器，用来消费事件
         disruptor.handleEventsWith(new LongEventHandler("Basic"));
 
-        // Start the Disruptor, starts all threads running
+        //启动disruptor
         disruptor.start();
 
-        // Get the ring buffer from the Disruptor to be used for publishing.
-        //获取ring buffer
+        //构建生产者，用来生产事件
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
-
         LongEventProducer producer = new LongEventProducer(ringBuffer);
 
         ByteBuffer bb = ByteBuffer.allocate(8);

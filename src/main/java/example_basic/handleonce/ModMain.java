@@ -4,7 +4,6 @@ import com.lmax.disruptor.dsl.Disruptor;
 import common.MainTemplate;
 import common.generic.GenericEvent;
 import common.generic.GenericEventModHandler;
-import example_basic.DependenciesChainMain;
 
 /**
  * Created by yanglikun on 2017/2/17.
