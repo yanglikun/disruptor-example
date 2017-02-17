@@ -21,7 +21,7 @@ step1、step2、step3 三个步骤会严格按照顺序执行 **测试类example
 ![image](https://cloud.githubusercontent.com/assets/1728527/23056553/edf97a30-f526-11e6-940f-2880977632ff.png)
 
 ## 菱形顺序
-step1、step2之间没有顺序，但是step3会等到step1、step2都执行完后才会执行 **测试类example_basic.DependenciesDiamondMain**
+step1-1、step1-2之间没有顺序，但是step2会等到step1-1、step2-1都执行完后才会执行 **测试类example_basic.DependenciesDiamondMain**
 ![image](https://cloud.githubusercontent.com/assets/1728527/23059297/c9a66f3c-f533-11e6-8e15-66e9839ae93f.png)
 
 ## 链式依赖顺序
