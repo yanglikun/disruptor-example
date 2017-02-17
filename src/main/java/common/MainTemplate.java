@@ -28,6 +28,8 @@ public abstract class MainTemplate {
         disruptor.start();
 
         RingBuffer<GenericEvent<String>> ringBuffer = disruptor.getRingBuffer();
+        doOtheringAfterStart(ringBuffer);
+
         GenericEventProducer<String> producer = new GenericEventProducer(ringBuffer);
         for (; ; ) {
             Scanner scan = new Scanner(System.in);
@@ -37,6 +39,10 @@ public abstract class MainTemplate {
             }
             producer.onData(msg);
         }
+    }
+
+    protected void doOtheringAfterStart(final RingBuffer<GenericEvent<String>> ringBuffer) {
+
     }
 
     public abstract void addHandler(Disruptor<GenericEvent<String>> disruptor);
