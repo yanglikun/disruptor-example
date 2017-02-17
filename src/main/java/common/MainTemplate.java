@@ -35,7 +35,7 @@ public abstract class MainTemplate {
             if ("exit".equals(msg)) {
                 System.exit(0);
             }
-            producer.onData("消息【" + msg + "】");
+            producer.onData(msg);
         }
     }
 
