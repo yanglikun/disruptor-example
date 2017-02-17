@@ -10,7 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * 使用ringBuffer.remainingCapacity()监控负载(环上还有个可用)
+ * 使用ringBuffer.remainingCapacity()监控负载(环上还有多少个slot可用)
  * <p>
  * Created by yanglikun on 2017/2/17.
  */
@@ -21,7 +21,7 @@ public class MonitorDisruptorMain extends MainTemplate {
     }
 
     @Override
-    protected void doOtheringAfterStart(final RingBuffer<GenericEvent<String>> ringBuffer) {
+    protected void doAfterDisruptorStart(final RingBuffer<GenericEvent<String>> ringBuffer) {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
