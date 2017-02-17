@@ -28,7 +28,7 @@ step1、step2之间没有顺序，但是step3会等到step1、step2都执行完�
 chain1、chain2之间没有依赖关系，but chain1中的 step1-1、step1-2有先后关系、chain12中的 step2-1、step2-2有先后关系。测试类**example_basic.DependenciesMultiChainMain**
 ![image](https://cloud.githubusercontent.com/assets/1728527/23056717/b9a3cb04-f527-11e6-854d-d042660641fd.png)
 
-## 异常处理异常异常
+## 异常处理
  异常需要设置setDefaultExceptionHandler，要不然处理器抛出异常后，就不会再处理事件了。**测试类example_other.SimulationExceptionMain**
  
 ## 监控disruptor的负载
