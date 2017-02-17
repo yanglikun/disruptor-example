@@ -16,7 +16,7 @@ import common.generic.GenericEventHandler;
 public class DependenciesMultiChainMain extends MainTemplate {
 
 
-    public void addHandleEvents(Disruptor<GenericEvent<String>> disruptor) {
+    public void addHandler(Disruptor<GenericEvent<String>> disruptor) {
         //chain1
         disruptor.handleEventsWith(new GenericEventHandler<String>("step1-1"))
                 .then(new GenericEventHandler<String>("step1-2"));

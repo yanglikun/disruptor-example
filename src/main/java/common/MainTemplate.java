@@ -24,7 +24,7 @@ public abstract class MainTemplate {
                 Executors.defaultThreadFactory());
 
 
-        addHandleEvents(disruptor);
+        addHandler(disruptor);
         disruptor.start();
 
         RingBuffer<GenericEvent<String>> ringBuffer = disruptor.getRingBuffer();
@@ -39,5 +39,5 @@ public abstract class MainTemplate {
         }
     }
 
-    public abstract void addHandleEvents(Disruptor<GenericEvent<String>> disruptor);
+    public abstract void addHandler(Disruptor<GenericEvent<String>> disruptor);
 }

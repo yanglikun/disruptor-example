@@ -11,7 +11,7 @@ import common.generic.GenericEventHandler;
  */
 public class ParallelEventHandlersMain extends MainTemplate {
 
-    public void addHandleEvents(Disruptor<GenericEvent<String>> disruptor) {
+    public void addHandler(Disruptor<GenericEvent<String>> disruptor) {
         disruptor.handleEventsWith(new GenericEventHandler<String>("step1"),
                 new GenericEventHandler<String>("step2")
                 , new GenericEventHandler<String>("step3"));

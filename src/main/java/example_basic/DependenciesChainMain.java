@@ -13,7 +13,7 @@ import common.generic.GenericEventHandler;
  */
 public class DependenciesChainMain extends MainTemplate {
 
-    public void addHandleEvents(Disruptor<GenericEvent<String>> disruptor) {
+    public void addHandler(Disruptor<GenericEvent<String>> disruptor) {
         disruptor.handleEventsWith(new GenericEventHandler<String>("step1"))
                 .then(new GenericEventHandler<String>("step2"))
                 .then(new GenericEventHandler<String>("step3"));

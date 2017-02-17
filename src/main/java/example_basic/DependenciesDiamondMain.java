@@ -14,7 +14,7 @@ import common.generic.GenericEventHandler;
  */
 public class DependenciesDiamondMain extends MainTemplate {
 
-    public void addHandleEvents(Disruptor<GenericEvent<String>> disruptor) {
+    public void addHandler(Disruptor<GenericEvent<String>> disruptor) {
         disruptor.handleEventsWith(new GenericEventHandler<String>("step1-1"),
                 new GenericEventHandler<String>("step1-2"))
                 .then(new GenericEventHandler<String>("step2"));//这里是用了then

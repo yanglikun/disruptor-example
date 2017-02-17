@@ -7,7 +7,10 @@ import com.lmax.disruptor.EventHandler;
  */
 public class GenericEventHandler<T> implements EventHandler<GenericEvent<T>> {
 
-    private String name;
+    protected String name;
+
+    public GenericEventHandler() {
+    }
 
     public GenericEventHandler(String name) {
         this.name = name;
