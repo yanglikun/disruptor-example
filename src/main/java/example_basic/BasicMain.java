@@ -8,6 +8,7 @@ import common.Long.LongEventHandler;
 import common.Long.LongEventProducer;
 
 import java.nio.ByteBuffer;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
@@ -23,7 +24,7 @@ public class BasicMain {
         LongEventFactory factory = new LongEventFactory();
 
         //指定ring buffer环的大小
-        int bufferSize = 1024;
+        int bufferSize = 8;
 
         //创建disruptor
         Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize,
@@ -37,12 +38,19 @@ public class BasicMain {
 
         //构建生产者，用来生产事件
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
-        LongEventProducer producer = new LongEventProducer(ringBuffer);
+        final LongEventProducer producer = new LongEventProducer(ringBuffer);
 
-        ByteBuffer bb = ByteBuffer.allocate(8);
-        for (long l = 0; l < 20; l++) {
-            bb.putLong(0, l);
-            producer.onData(bb);
+        ExecutorService es = Executors.newFixedThreadPool(100);
+        for (int i = 0; i < 10; i++) {
+            es.submit(new Runnable() {
+                public void run() {
+                    ByteBuffer bb = ByteBuffer.allocate(8);
+                    for (long l = 0; l < 20; l++) {
+                        bb.putLong(0, l);
+                        producer.onData(bb);
+                    }
+                }
+            });
         }
         System.out.println("end.....");
     }
